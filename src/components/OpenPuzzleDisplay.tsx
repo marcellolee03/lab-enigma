@@ -1,27 +1,19 @@
 import { useState } from "react"
 import type { Puzzle } from "../models/puzzle"
+import { checkAnswer } from "../utils/checkAnswer"
 
 type PuzzleDisplayProps = {
     puzzle: Puzzle
 }
 
-export function PuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
+export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
 
     const [ typedAnswer, setTypedAnswer ] = useState("")
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        checkAnswer(typedAnswer)
-
-    }
-
-    function checkAnswer(answer: string) {
-        if (answer.toLowerCase().replaceAll(" ", "") === puzzle.answer.toLowerCase()) {
-            console.log("right!")
-        } else {
-            console.log("wrong!")
-        }
+        checkAnswer(typedAnswer, puzzle)
     }
 
     return (
@@ -31,16 +23,13 @@ export function PuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
             <p>{puzzle.question}</p>
 
             {puzzle.answerType === "open"
-                ? (<form onSubmit={handleSubmit}>
+                && (<form onSubmit={handleSubmit}>
                         <input 
                             type="text"
                             value={typedAnswer}
                             onChange={(e)=>setTypedAnswer(e.target.value)}
                         />
-                  </form>)
-                : puzzle.options.map((option) => (
-                    <button onClick={() => checkAnswer(option)}>{option}</button>
-                ))
+                    </form>)
             }
         </>
     )
