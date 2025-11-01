@@ -3,6 +3,7 @@ type PuzzleBase = {
     question: string,
     hint?: string,
     answer: string
+    penalty?: number
 }
 
 type OpenPuzzle = PuzzleBase & {

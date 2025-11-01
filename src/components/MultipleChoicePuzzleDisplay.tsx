@@ -1,20 +1,28 @@
-import type { Puzzle } from "../models/puzzle"
+import { usePuzzleContext } from "../context/usePuzzleContext"
+import { type Puzzle } from "../models/Puzzle"
 import { checkAnswer } from "../utils/checkAnswer"
 
-type MultipleChoicePuzzleDisplayProps = {
+interface MultipleChoicePuzzleDisplayProps {
     puzzle: Puzzle
 }
 
 export function MultipleChoicePuzzleDisplay({ puzzle }: MultipleChoicePuzzleDisplayProps) {
+    const {moveToNextPuzzle} = usePuzzleContext()
+
+    function handleClick(input: string, puzzle: Puzzle) {
+        if (checkAnswer(input, puzzle)) {
+            moveToNextPuzzle()
+        }
+    }
     return (
         <>
-            {puzzle.hint && <p>{puzzle.hint}</p>}
-            
             <p>{puzzle.question}</p>
+            
+            {puzzle.hint && <p>{puzzle.hint}</p>}
 
             {puzzle.answerType === "multiple_choice"
                 && puzzle.options.map((option) => (
-                    <button onClick={() => checkAnswer(option, puzzle)}>{option}</button>
+                    <button onClick={() => handleClick(option, puzzle)}>{option}</button>
                 ))
             }
         </>

@@ -1,26 +1,32 @@
 import { useState } from "react"
-import type { Puzzle } from "../models/puzzle"
+import type { Puzzle } from "../models/Puzzle"
 import { checkAnswer } from "../utils/checkAnswer"
+import { usePuzzleContext } from "../context/usePuzzleContext"
 
-type PuzzleDisplayProps = {
+interface PuzzleDisplayProps {
     puzzle: Puzzle
 }
 
 export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
 
+    const { moveToNextPuzzle } = usePuzzleContext()
+
     const [ typedAnswer, setTypedAnswer ] = useState("")
+    
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        checkAnswer(typedAnswer, puzzle)
+        if (checkAnswer(typedAnswer, puzzle)) {
+            moveToNextPuzzle()
+        }
     }
 
     return (
         <>
-            {puzzle.hint && <p>{puzzle.hint}</p>}
-
             <p>{puzzle.question}</p>
+
+            {puzzle.hint && <p>{puzzle.hint}</p>}
 
             {puzzle.answerType === "open"
                 && (<form onSubmit={handleSubmit}>
