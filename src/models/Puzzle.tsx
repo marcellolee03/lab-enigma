@@ -2,7 +2,7 @@ type PuzzleBase = {
     id: number,
     question: string,
     hint?: string,
-    answer: string
+    answers: string[]
     penalty?: number
 }
 

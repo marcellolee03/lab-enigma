@@ -1,25 +1,22 @@
 import { useState } from "react"
 import type { Puzzle } from "../models/Puzzle"
-import { checkAnswer } from "../utils/checkAnswer"
-import { usePuzzleContext } from "../context/usePuzzleContext"
+import { SubmitAnswerButton } from "./SubmitAnswerButton"
 
 interface PuzzleDisplayProps {
     puzzle: Puzzle
 }
 
 export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
+    const [ typedAnswer, setTypedAnswer ] = useState<string>("")
+    const [ userAnswer, setUserAnswer ] = useState<string[]>([])
 
-    const { moveToNextPuzzle } = usePuzzleContext()
+    function handleChange (event: React.ChangeEvent<HTMLInputElement>) {
+        const newTypedValue = event.target.value
 
-    const [ typedAnswer, setTypedAnswer ] = useState("")
-    
+        setTypedAnswer(newTypedValue)
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault()
-
-        if (checkAnswer(typedAnswer, puzzle)) {
-            moveToNextPuzzle()
-        }
+        const newTypedValueArr: string[] = [newTypedValue] 
+        setUserAnswer(newTypedValueArr)
     }
 
     return (
@@ -28,14 +25,20 @@ export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
 
             {puzzle.hint && <p>{puzzle.hint}</p>}
 
+
             {puzzle.answerType === "open"
-                && (<form onSubmit={handleSubmit}>
-                        <input 
-                            type="text"
-                            value={typedAnswer}
-                            onChange={(e)=>setTypedAnswer(e.target.value)}
-                        />
-                    </form>)
+                && (
+                <>
+                    <input
+                        type="text"
+                        value={typedAnswer}
+                        onChange={handleChange}
+                    />
+
+                    <SubmitAnswerButton answers={puzzle.answers} input={userAnswer} />
+                
+                </>
+                )
             }
         </>
     )
