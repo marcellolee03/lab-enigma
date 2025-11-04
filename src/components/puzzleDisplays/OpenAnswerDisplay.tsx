@@ -31,7 +31,11 @@ export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
                         onChange={handleChange}
                     />
 
-                    <SubmitAnswerButton answers={puzzle.answers} input={userAnswer} />
+                    <SubmitAnswerButton 
+                        answers={puzzle.answers} 
+                        input={userAnswer} 
+                        penalty={puzzle.penalty}
+                    />
                 
                 </>
                 )

@@ -3,9 +3,10 @@ import type { Puzzle } from "../models/Puzzle"
 
 
 export interface PuzzleContextType {
-    hello: () => void,
     getCurrentPuzzle: () => Puzzle,
-    moveToNextPuzzle: () => void
+    moveToNextPuzzle: () => void,
+    getRemainingTime: () => number,
+    applyPenalty: (penalty: number) => void
 }
 
 export const PuzzleContext = createContext<PuzzleContextType | undefined>(undefined)

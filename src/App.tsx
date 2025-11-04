@@ -1,3 +1,4 @@
+import CountdownTimer from "./components/CountdownTimer"
 import { CheckAnswerDisplay } from "./components/puzzleDisplays/CheckAnswerDisplay"
 import { OpenPuzzleDisplay } from "./components/puzzleDisplays/OpenAnswerDisplay"
 import { RadioAnswerDisplay } from "./components/puzzleDisplays/RadioAnswerDisplay"
@@ -12,6 +13,7 @@ function App() {
   if (currentPuzzle.answerType === "open") {
     return (
       <>
+        <CountdownTimer/>
         <OpenPuzzleDisplay puzzle = {currentPuzzle} />
       </>
     )

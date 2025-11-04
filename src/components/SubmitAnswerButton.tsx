@@ -2,17 +2,21 @@ import { usePuzzleContext } from "../context/usePuzzleContext"
 
 interface SubmitAnswerButtonProps {
     answers: string[],
-    input: string[]
+    input: string[],
+    penalty?: number
 }
 
-export function SubmitAnswerButton({answers, input}: SubmitAnswerButtonProps) {
+export function SubmitAnswerButton({answers, input, penalty}: SubmitAnswerButtonProps) {
 
-    const { moveToNextPuzzle } = usePuzzleContext()
+    const { moveToNextPuzzle, applyPenalty } = usePuzzleContext()
 
     function areArraysEqual(arr1: string[], arr2: string[]): boolean {
         if (arr1.length !== arr2.length) {
             return false
         }
+
+        arr1 = arr1.map((item) => item.toLowerCase())
+        arr2 = arr2.map((item) => item.toLowerCase())
 
         const sortedArr1 = [...arr1].sort()
         const sortedArr2 = [...arr2].sort()
@@ -26,9 +30,18 @@ export function SubmitAnswerButton({answers, input}: SubmitAnswerButtonProps) {
     }
 
     function handleClick(arr1: string[], arr2: string[]) {
+
+        if (answers.length === 0) {
+            moveToNextPuzzle()
+            return
+        }
+
         if (areArraysEqual(arr1, arr2)) {
             moveToNextPuzzle()
-            console.log("correct!")
+        } else {
+            if (penalty) {
+                applyPenalty(penalty)
+            }
         }
     }
 
