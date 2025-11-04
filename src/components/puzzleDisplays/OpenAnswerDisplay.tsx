@@ -1,6 +1,6 @@
 import { useState } from "react"
-import type { Puzzle } from "../models/Puzzle"
-import { SubmitAnswerButton } from "./SubmitAnswerButton"
+import type { Puzzle } from "../../models/Puzzle"
+import { SubmitAnswerButton } from "../SubmitAnswerButton"
 
 interface PuzzleDisplayProps {
     puzzle: Puzzle
@@ -12,11 +12,8 @@ export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
 
     function handleChange (event: React.ChangeEvent<HTMLInputElement>) {
         const newTypedValue = event.target.value
-
         setTypedAnswer(newTypedValue)
-
-        const newTypedValueArr: string[] = [newTypedValue] 
-        setUserAnswer(newTypedValueArr)
+        setUserAnswer([newTypedValue])
     }
 
     return (
@@ -24,7 +21,6 @@ export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
             <p>{puzzle.question}</p>
 
             {puzzle.hint && <p>{puzzle.hint}</p>}
-
 
             {puzzle.answerType === "open"
                 && (

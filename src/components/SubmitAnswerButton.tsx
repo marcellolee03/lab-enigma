@@ -28,6 +28,7 @@ export function SubmitAnswerButton({answers, input}: SubmitAnswerButtonProps) {
     function handleClick(arr1: string[], arr2: string[]) {
         if (areArraysEqual(arr1, arr2)) {
             moveToNextPuzzle()
+            console.log("correct!")
         }
     }
 

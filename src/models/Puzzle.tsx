@@ -12,6 +12,7 @@ type OpenPuzzle = PuzzleBase & {
 
 type MultipleChoicePuzzle = PuzzleBase & {
     answerType: "multiple_choice",
+    inputType: "radio" | "checkbox",
     options: string[]
 }
 
