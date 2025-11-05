@@ -14,7 +14,7 @@ export function PuzzleProvider({ children }: PuzzleProviderProps) {
     const currentPuzzle: Puzzle = puzzles[currentPuzzleIndex]
 
     // Timer Logic
-    const [ remainingTime, setRemainingTime ] = useState<number>(99999)
+    const [ remainingTime, setRemainingTime ] = useState<number>(40 * 60)
     useEffect(() => {
         if (remainingTime === 0) return
 

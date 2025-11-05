@@ -1,7 +1,7 @@
 import { usePuzzleContext } from "../context/usePuzzleContext";
 
 
-function CountdownTimer() {
+export function CountdownTimer() {
   const { getRemainingTime } = usePuzzleContext()
 
   const remainingTime:number = getRemainingTime()
