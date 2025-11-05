@@ -52,7 +52,7 @@ export const puzzles: Puzzle[] = [
         options: ["Gram-positiva", "Gram-negativa"],
         inputType: "radio",
         question: "Qual é o tipo da parede celular da bactéria?",
-        answers: [],
+        answers: ["Gram-positiva"],
     },
 
     {
@@ -61,7 +61,7 @@ export const puzzles: Puzzle[] = [
         options: ["Catalase Positiva", "Catalase Negativa"],
         inputType: "radio",
         question: "Prova da catalase.",
-        answers: [],
+        answers: ["Catalase Negativa"],
     },
 
     {
@@ -71,5 +71,47 @@ export const puzzles: Puzzle[] = [
         inputType: "checkbox",
         question: "A bactéria é sensível ä quais antibióticos testados?",
         answers: [],
+    },
+
+    {
+        id: 10,
+        answerType: "open",
+        question: "--nos olhos do microbiologista.",
+        answers: ["microscópio"],
+    },
+
+    {
+        id: 11,
+        answerType: "open",
+        question: "--",
+        answers: ["autoclave"],
+    },
+        
+    {
+        id: 12,
+        answerType: "open",
+        question: "---",
+        answers: ["Meio de cultura com cloranfenicol"],
+    },
+
+    {
+        id: 13,
+        answerType: "open",
+        question: "----",
+        answers: ["fluxo laminar"],
+    },
+
+    {
+        id: 14,
+        answerType: "open",
+        question: "-----",
+        answers: ["modelos didáticos"],
+    },
+
+    {
+        id: 15,
+        answerType: "open",
+        question: "--6384",
+        answers: ["enterococcus faecalis"],
     },
 ]

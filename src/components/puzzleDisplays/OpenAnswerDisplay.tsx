@@ -35,6 +35,7 @@ export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
                         answers={puzzle.answers} 
                         input={userAnswer} 
                         penalty={puzzle.penalty}
+                        onClick={() => setTypedAnswer("")}
                     />
                 
                 </>
