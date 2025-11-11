@@ -35,7 +35,6 @@ export function PuzzleProvider({ children }: PuzzleProviderProps) {
 
     function moveToNextPuzzle() {
         if ((currentPuzzleIndex + 1) >= puzzles.length) {
-            console.log("oii")
             navigate("/success", { replace: true });
         } else {
             setCurrentPuzzleIndex(prev => prev + 1)
@@ -44,11 +43,7 @@ export function PuzzleProvider({ children }: PuzzleProviderProps) {
 
     // Timer related functions
     function getRemainingTime () {
-        if (remainingTime <= 0){
-            navigate("/failure", { replace: true })
-        } else {
-            return remainingTime
-        }
+        return remainingTime
     }
 
     function applyPenalty(penalty: number){
