@@ -44,7 +44,11 @@ export function PuzzleProvider({ children }: PuzzleProviderProps) {
 
     // Timer related functions
     function getRemainingTime () {
-        return remainingTime
+        if (remainingTime <= 0){
+            navigate("/failure", { replace: true })
+        } else {
+            return remainingTime
+        }
     }
 
     function applyPenalty(penalty: number){

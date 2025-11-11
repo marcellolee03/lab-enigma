@@ -1,6 +1,7 @@
 import { PATHS } from "./paths";
 import { PuzzlePage } from "../pages/PuzzlePage";
 import { SuccessPage } from "../pages/SuccessPage";
+import { FailurePage } from "../pages/FailurePage";
 
 export const routes = [
     {
@@ -13,5 +14,10 @@ export const routes = [
         element: <SuccessPage />,
         title: "Sucesso"
     },
+    {
+        path: PATHS.FAILURE,
+        element: <FailurePage />,
+        title: "Fracasso"
+    }
 
 ]

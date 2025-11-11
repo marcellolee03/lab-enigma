@@ -5,7 +5,7 @@ import type { Puzzle } from "../models/Puzzle"
 export interface PuzzleContextType {
     getCurrentPuzzle: () => Puzzle,
     moveToNextPuzzle: () => void,
-    getRemainingTime: () => number,
+    getRemainingTime: () => number | undefined,
     applyPenalty: (penalty: number) => void
 }
 
