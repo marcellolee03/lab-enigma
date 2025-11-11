@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import type { Puzzle } from "../../models/Puzzle"
 import { SubmitAnswerButton } from "../SubmitAnswerButton"
 
@@ -9,6 +9,10 @@ interface PuzzleDisplayProps {
 export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
     const [ typedAnswer, setTypedAnswer ] = useState<string>("")
     const [ userAnswer, setUserAnswer ] = useState<string[]>([])
+
+    useEffect(()=>{
+        setUserAnswer([])
+    }, [puzzle])
 
     function handleChange (event: React.ChangeEvent<HTMLInputElement>) {
         const newTypedValue = event.target.value

@@ -1,5 +1,5 @@
 import { type Puzzle } from "../../models/Puzzle"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { SubmitAnswerButton } from "../SubmitAnswerButton"
 
 interface PuzzleDisplayProps {
@@ -8,6 +8,10 @@ interface PuzzleDisplayProps {
 
 export function CheckAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
     const [ userAnswers, setUserAnswers ] = useState<string[]>([]);
+
+    useEffect(()=>{
+        setUserAnswers([])
+    }, [puzzle])
 
     function handleChange(option: string, isChecked: boolean) {
 
@@ -31,7 +35,7 @@ export function CheckAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
             {puzzle.answerType === "multiple_choice"
                 && puzzle.options.map((option) => (
                     <>
-                        <label>
+                        <label key={option}>
                             <input
                                 type="checkbox"
                                 value={option}

@@ -5,8 +5,7 @@ export const puzzles: Puzzle[] = [
         id: 1,
         answerType: "open",
         question: "Qual é o formato da colônia?",
-        answers: ["FODA-SE"],
-        penalty: 60
+        answers: [],
     },
 
     {
@@ -53,6 +52,7 @@ export const puzzles: Puzzle[] = [
         inputType: "radio",
         question: "Qual é o tipo da parede celular da bactéria?",
         answers: ["Gram-positiva"],
+        penalty: 300
     },
 
     {
@@ -61,7 +61,8 @@ export const puzzles: Puzzle[] = [
         options: ["Catalase Positiva", "Catalase Negativa"],
         inputType: "radio",
         question: "Prova da catalase.",
-        answers: ["Catalase Negativa"],
+        answers: ["Catalase Positiva"],
+        penalty: 300
     },
 
     {
@@ -69,8 +70,9 @@ export const puzzles: Puzzle[] = [
         answerType: "multiple_choice",
         options: ["Catalase Positiva", "Catalase Negativa"],
         inputType: "checkbox",
-        question: "A bactéria é sensível ä quais antibióticos testados?",
+        question: "A bactéria é sensível à quais antibióticos testados?",
         answers: [],
+        penalty: 300
     },
 
     {
@@ -78,6 +80,7 @@ export const puzzles: Puzzle[] = [
         answerType: "open",
         question: "--nos olhos do microbiologista.",
         answers: ["microscópio"],
+        penalty: 300
     },
 
     {
@@ -85,6 +88,7 @@ export const puzzles: Puzzle[] = [
         answerType: "open",
         question: "--",
         answers: ["autoclave"],
+        penalty: 300
     },
         
     {
@@ -92,6 +96,7 @@ export const puzzles: Puzzle[] = [
         answerType: "open",
         question: "---",
         answers: ["Meio de cultura com cloranfenicol"],
+        penalty: 300
     },
 
     {
@@ -99,6 +104,7 @@ export const puzzles: Puzzle[] = [
         answerType: "open",
         question: "----",
         answers: ["fluxo laminar"],
+        penalty: 300
     },
 
     {
@@ -106,12 +112,14 @@ export const puzzles: Puzzle[] = [
         answerType: "open",
         question: "-----",
         answers: ["modelos didáticos"],
+        penalty: 300
     },
 
     {
         id: 15,
         answerType: "open",
-        question: "--6384",
+        question: "--6384 Qual é o nome da bactéria?",
         answers: ["enterococcus faecalis"],
+        penalty: 300
     },
 ]

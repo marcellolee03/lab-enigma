@@ -1,6 +1,6 @@
 import { PATHS } from "./paths";
 import { PuzzlePage } from "../pages/PuzzlePage";
-import { FinalHintPage } from "../pages/FinalHintPage";
+import { SuccessPage } from "../pages/SuccessPage";
 
 export const routes = [
     {
@@ -9,9 +9,9 @@ export const routes = [
         title: "Puzzle"
     },
     {
-        path: PATHS.PUZZLE,
-        element: <FinalHintPage />,
-        title: "Final Hint"
+        path: PATHS.SUCCESS,
+        element: <SuccessPage />,
+        title: "Sucesso"
     },
 
 ]

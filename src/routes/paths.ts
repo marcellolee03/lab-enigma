@@ -1,6 +1,6 @@
 export const PATHS = {
     PUZZLE: "/puzzle",
-    END: "/end"
+    SUCCESS: "/success"
 } as const
 
 export type PathKeys = keyof typeof PATHS

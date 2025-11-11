@@ -3,6 +3,7 @@ import { PuzzleContext } from "./usePuzzleContext";
 import { puzzles } from "../data/data";
 import type { Puzzle } from "../models/Puzzle";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface PuzzleProviderProps {
     children: ReactNode
@@ -12,6 +13,8 @@ export function PuzzleProvider({ children }: PuzzleProviderProps) {
 
     const [ currentPuzzleIndex, setCurrentPuzzleIndex ] = useState<number>(0)
     const currentPuzzle: Puzzle = puzzles[currentPuzzleIndex]
+
+    const navigate = useNavigate();
 
     // Timer Logic
     const [ remainingTime, setRemainingTime ] = useState<number>(40 * 60)
@@ -31,7 +34,12 @@ export function PuzzleProvider({ children }: PuzzleProviderProps) {
     }
 
     function moveToNextPuzzle() {
-        setCurrentPuzzleIndex(prev => prev + 1)
+        if ((currentPuzzleIndex + 1) >= puzzles.length) {
+            console.log("oii")
+            navigate("/success", { replace: true });
+        } else {
+            setCurrentPuzzleIndex(prev => prev + 1)
+        }
     }
 
     // Timer related functions

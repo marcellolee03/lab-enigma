@@ -1,5 +1,5 @@
 import { type Puzzle } from "../../models/Puzzle"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { SubmitAnswerButton } from "../SubmitAnswerButton"
 
 interface PuzzleDisplayProps {
@@ -8,6 +8,10 @@ interface PuzzleDisplayProps {
 
 export function RadioAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
     const [ userAnswers, setUserAnswers ] = useState<string[]>([]);
+
+    useEffect(()=>{
+        setUserAnswers([])
+    }, [puzzle])
 
     function handleChange(option: string) {
 
@@ -25,12 +29,13 @@ export function RadioAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
             {puzzle.answerType === "multiple_choice"
                 && puzzle.options.map((option) => (
                     <>
-                        <label>
+                        <label key={option}>
                             <input
                                 type="radio"
                                 name="choice"
                                 value={option}
                                 onChange={() => handleChange(option)}
+                                checked={userAnswers.includes(option)}
                             />
                             {option}
                         </label>
@@ -40,7 +45,11 @@ export function RadioAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
                 ))
             }
 
-            <SubmitAnswerButton answers={puzzle.answers} input={userAnswers}/>
+            <SubmitAnswerButton 
+                answers={puzzle.answers} 
+                input={userAnswers}
+                penalty={puzzle.penalty}
+                />
         </>
     )
 }
