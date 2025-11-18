@@ -1,4 +1,4 @@
-import { usePuzzleContext } from "../context/usePuzzleContext"
+import { usePuzzleContext } from "../context/PuzzleContext";
 
 interface SubmitAnswerButtonProps {
     answers: string[],

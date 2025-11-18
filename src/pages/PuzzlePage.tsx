@@ -1,7 +1,7 @@
 import { type Puzzle } from "../models/Puzzle"
 import { CountdownTimer } from "../components/CountdownTimer"
 import { OpenPuzzleDisplay } from "../components/puzzleDisplays/OpenAnswerDisplay"
-import { usePuzzleContext } from "../context/usePuzzleContext"
+import { usePuzzleContext } from "../context/PuzzleContext";
 import { CheckAnswerDisplay } from "../components/puzzleDisplays/CheckAnswerDisplay"
 import { RadioAnswerDisplay } from "../components/puzzleDisplays/RadioAnswerDisplay"
 

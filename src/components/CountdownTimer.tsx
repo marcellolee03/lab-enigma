@@ -1,10 +1,10 @@
-import { usePuzzleContext } from "../context/usePuzzleContext";
+import { useTimerContext } from "../context/TimerContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 export function CountdownTimer() {
-  const { getRemainingTime } = usePuzzleContext()
+  const { getRemainingTime } = useTimerContext()
 
   const remainingTime: number = getRemainingTime()
   const navigate = useNavigate()
