@@ -1,4 +1,5 @@
 import { usePuzzleContext } from "../context/PuzzleContext";
+import { useTimerContext } from "../context/TimerContext";
 
 interface SubmitAnswerButtonProps {
     answers: string[],
@@ -9,7 +10,8 @@ interface SubmitAnswerButtonProps {
 
 export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAnswerButtonProps) {
 
-    const { moveToNextPuzzle, applyPenalty } = usePuzzleContext()
+    const { moveToNextPuzzle } = usePuzzleContext()
+    const { applyPenalty } = useTimerContext()
 
     function normalizeString(str: string): string {
         return str

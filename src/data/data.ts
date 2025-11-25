@@ -68,7 +68,7 @@ export const puzzles: Puzzle[] = [
     {
         id: 9,
         answerType: "multiple_choice",
-        options: ["Catalase Positiva", "Catalase Negativa"],
+        options: ["Tetraciclina", "Novobiocina", "Vancomicina", "Penicilina", "Nitrofurantoína", "Ceftriaxona"],
         inputType: "checkbox",
         question: "A bactéria é sensível à quais antibióticos testados?",
         answers: [],
