@@ -2,17 +2,33 @@ import { type Puzzle } from "../models/Puzzle"
 
 export const puzzles: Puzzle[] = [
     {
-        answerType: "special",
-        id: 0,
+        answerType: "enigma",
+        enigmas: [
+            {
+                id: 0,
 
-        hint: "teste",
-        first_question: "alo?",
-        first_answer: "alho",
+                hint: "teste",
+                first_question: "alo?",
+                first_answer: "alho",
 
-        second_question: "za warudo",
-        second_answer: "el mundoo",
+                second_question: "za warudo",
+                second_answer: "el mundoo",
 
-        penalty: 2
+                penalty: 2
+            },
+            {
+                id: 1,
+
+                hint: "teste2",
+                first_question: "alo?",
+                first_answer: "alho",
+
+                second_question: "za warudo2",
+                second_answer: "el mundoo",
+
+                penalty: 2
+            }
+        ]
     },
 
     {

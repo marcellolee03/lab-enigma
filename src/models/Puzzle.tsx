@@ -16,9 +16,7 @@ type MultipleChoicePuzzle = PuzzleBase & {
     options: string[]
 }
 
-type EnigmaTypePuzzle = {
-    answerType: "special",
-
+export type Enigma = {
     id: number
 
     hint: string
@@ -29,6 +27,11 @@ type EnigmaTypePuzzle = {
     second_answer: string
 
     penalty?: number
+}
+
+type EnigmaTypePuzzle = {
+    answerType: "enigma",
+    enigmas: Enigma[]
 }
 
 export type Puzzle = OpenPuzzle | MultipleChoicePuzzle | EnigmaTypePuzzle

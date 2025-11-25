@@ -4,7 +4,7 @@ import { OpenPuzzleDisplay } from "../components/puzzleDisplays/OpenAnswerDispla
 import { usePuzzleContext } from "../context/PuzzleContext";
 import { CheckAnswerDisplay } from "../components/puzzleDisplays/CheckAnswerDisplay"
 import { RadioAnswerDisplay } from "../components/puzzleDisplays/RadioAnswerDisplay"
-import { CarouselCard } from "../components/CarouselCard";
+import { EnigmaCarousel } from "../components/puzzleDisplays/EnigmaCarousel/EnigmaCarousel";
 
 export function PuzzlePage(){
     const { getCurrentPuzzle } = usePuzzleContext()
@@ -17,11 +17,11 @@ export function PuzzlePage(){
             <OpenPuzzleDisplay puzzle = {currentPuzzle} />
           </>
         )
-      } else if (currentPuzzle.answerType === "special") {
+      } else if (currentPuzzle.answerType === "enigma") {
         return (
           <>
             <CountdownTimer/>
-            <CarouselCard puzzle = {currentPuzzle} />
+            <EnigmaCarousel enigmas={currentPuzzle.enigmas} />
           </>
         )
       } else {
