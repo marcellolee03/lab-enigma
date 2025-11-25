@@ -4,6 +4,7 @@ import { OpenPuzzleDisplay } from "../components/puzzleDisplays/OpenAnswerDispla
 import { usePuzzleContext } from "../context/PuzzleContext";
 import { CheckAnswerDisplay } from "../components/puzzleDisplays/CheckAnswerDisplay"
 import { RadioAnswerDisplay } from "../components/puzzleDisplays/RadioAnswerDisplay"
+import { CarouselCard } from "../components/CarouselCard";
 
 export function PuzzlePage(){
     const { getCurrentPuzzle } = usePuzzleContext()
@@ -14,6 +15,13 @@ export function PuzzlePage(){
           <>
             <CountdownTimer />
             <OpenPuzzleDisplay puzzle = {currentPuzzle} />
+          </>
+        )
+      } else if (currentPuzzle.answerType === "special") {
+        return (
+          <>
+            <CountdownTimer/>
+            <CarouselCard puzzle = {currentPuzzle} />
           </>
         )
       } else {

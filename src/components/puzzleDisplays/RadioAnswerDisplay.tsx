@@ -14,34 +14,29 @@ export function RadioAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
     }, [puzzle])
 
     function handleChange(option: string) {
-
         if (puzzle.answerType === "multiple_choice") {
             setUserAnswers([option])
         }
     }
 
-    return (
+    if (puzzle.answerType === "multiple_choice") {
+        return (
         <>
             <p>{puzzle.question}</p>
-            
+
             {puzzle.hint && <p>{puzzle.hint}</p>}
 
-            {puzzle.answerType === "multiple_choice"
-                && puzzle.options.map((option) => (
-                    <>
-                        <label key={option}>
-                            <input
-                                type="radio"
-                                name="choice"
-                                value={option}
-                                onChange={() => handleChange(option)}
-                                checked={userAnswers.includes(option)}
-                            />
-                            {option}
-                        </label>
-
-                    </>
-
+            {puzzle.options.map((option) => (
+                    <label key={option}>
+                        <input
+                            type="radio"
+                            name="choice"
+                            value={option}
+                            onChange={() => handleChange(option)}
+                            checked={userAnswers.includes(option)}
+                        />
+                        {option}
+                    </label>
                 ))
             }
 
@@ -49,7 +44,11 @@ export function RadioAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
                 answers={puzzle.answers} 
                 input={userAnswers}
                 penalty={puzzle.penalty}
-                />
+            />
         </>
-    )
+        )
+    } else {
+        null
+    }
+    
 }

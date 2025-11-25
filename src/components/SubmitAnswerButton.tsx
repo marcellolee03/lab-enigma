@@ -16,8 +16,8 @@ export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAns
     function normalizeString(str: string): string {
         return str
             .toLowerCase()
-            .normalize('NFD') // Normalization Form D
-            .replace(/[\u0300-\u036f]/g, ''); // Remove diacritics
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
     }
 
     function areArraysEqual(arr1: string[], arr2: string[]): boolean {
@@ -36,7 +36,7 @@ export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAns
                 return false
             }
         }
-        return true;
+        return true
     }
 
     function handleClick(arr1: string[], arr2: string[]) {
