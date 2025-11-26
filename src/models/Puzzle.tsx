@@ -16,4 +16,22 @@ type MultipleChoicePuzzle = PuzzleBase & {
     options: string[]
 }
 
-export type Puzzle = OpenPuzzle | MultipleChoicePuzzle
+export type Enigma = {
+    id: number
+
+    hint: string
+    first_question: string
+    first_answer: string
+
+    second_question: string
+    second_answer: string
+
+    penalty?: number
+}
+
+type EnigmaTypePuzzle = {
+    answerType: "enigma",
+    enigmas: Enigma[]
+}
+
+export type Puzzle = OpenPuzzle | MultipleChoicePuzzle | EnigmaTypePuzzle

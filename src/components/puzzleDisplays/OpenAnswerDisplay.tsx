@@ -20,31 +20,28 @@ export function OpenPuzzleDisplay({ puzzle } : PuzzleDisplayProps) {
         setUserAnswer([newTypedValue])
     }
 
-    return (
+    if (puzzle.answerType === "open") {
+        return (
         <>
             <p>{puzzle.question}</p>
-
+            
             {puzzle.hint && <p>{puzzle.hint}</p>}
 
-            {puzzle.answerType === "open"
-                && (
-                <>
-                    <input
-                        type="text"
-                        value={typedAnswer}
-                        onChange={handleChange}
-                    />
+            <input
+                type="text"
+                value={typedAnswer}
+                onChange={handleChange}
+            />
 
-                    <SubmitAnswerButton 
-                        answers={puzzle.answers} 
-                        input={userAnswer} 
-                        penalty={puzzle.penalty}
-                        onClick={() => setTypedAnswer("")}
-                    />
-                
-                </>
-                )
-            }
+            <SubmitAnswerButton 
+                answers={puzzle.answers} 
+                input={userAnswer} 
+                penalty={puzzle.penalty}
+                onClick={() => setTypedAnswer("")}
+            />
         </>
-    )
+        )
+    } else {
+        null
+    }
 }

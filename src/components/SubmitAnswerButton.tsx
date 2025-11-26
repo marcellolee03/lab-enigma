@@ -1,4 +1,5 @@
-import { usePuzzleContext } from "../context/usePuzzleContext"
+import { usePuzzleContext } from "../context/PuzzleContext";
+import { useTimerContext } from "../context/TimerContext";
 
 interface SubmitAnswerButtonProps {
     answers: string[],
@@ -9,13 +10,14 @@ interface SubmitAnswerButtonProps {
 
 export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAnswerButtonProps) {
 
-    const { moveToNextPuzzle, applyPenalty } = usePuzzleContext()
+    const { moveToNextPuzzle } = usePuzzleContext()
+    const { applyPenalty } = useTimerContext()
 
     function normalizeString(str: string): string {
         return str
             .toLowerCase()
-            .normalize('NFD') // Normalization Form D
-            .replace(/[\u0300-\u036f]/g, ''); // Remove diacritics
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
     }
 
     function areArraysEqual(arr1: string[], arr2: string[]): boolean {
@@ -34,7 +36,7 @@ export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAns
                 return false
             }
         }
-        return true;
+        return true
     }
 
     function handleClick(arr1: string[], arr2: string[]) {

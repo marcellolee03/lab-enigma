@@ -14,8 +14,6 @@ export function CheckAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
     }, [puzzle])
 
     function handleChange(option: string, isChecked: boolean) {
-
-        if (puzzle.answerType === "multiple_choice") {
             if (isChecked) {
                 setUserAnswers(prevAnswers => [...prevAnswers, option])
             } else {
@@ -23,17 +21,16 @@ export function CheckAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
                     prevAnswers.filter(answer => answer !== option)
                 )
             }
-        }
     }
 
-    return (
+    if (puzzle.answerType === "multiple_choice") {
+        return (
         <>
             <p>{puzzle.question}</p>
             
             {puzzle.hint && <p>{puzzle.hint}</p>}
 
-            {puzzle.answerType === "multiple_choice"
-                && puzzle.options.map((option) => (
+            {puzzle.options.map((option) => (
                     <>
                         <label key={option}>
                             <input
@@ -43,13 +40,14 @@ export function CheckAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
                             />
                             {option}
                         </label>
-
                     </>
-
                 ))
             }
 
             <SubmitAnswerButton answers={puzzle.answers} input={userAnswers}/>
         </>
-    )
+        )
+    } else {
+        null
+    }
 }

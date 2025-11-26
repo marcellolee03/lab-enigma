@@ -1,9 +1,10 @@
 import { type Puzzle } from "../models/Puzzle"
 import { CountdownTimer } from "../components/CountdownTimer"
 import { OpenPuzzleDisplay } from "../components/puzzleDisplays/OpenAnswerDisplay"
-import { usePuzzleContext } from "../context/usePuzzleContext"
+import { usePuzzleContext } from "../context/PuzzleContext";
 import { CheckAnswerDisplay } from "../components/puzzleDisplays/CheckAnswerDisplay"
 import { RadioAnswerDisplay } from "../components/puzzleDisplays/RadioAnswerDisplay"
+import { EnigmaCarousel } from "../components/puzzleDisplays/EnigmaCarousel/EnigmaCarousel";
 
 export function PuzzlePage(){
     const { getCurrentPuzzle } = usePuzzleContext()
@@ -14,6 +15,13 @@ export function PuzzlePage(){
           <>
             <CountdownTimer />
             <OpenPuzzleDisplay puzzle = {currentPuzzle} />
+          </>
+        )
+      } else if (currentPuzzle.answerType === "enigma") {
+        return (
+          <>
+            <CountdownTimer/>
+            <EnigmaCarousel enigmas={currentPuzzle.enigmas} />
           </>
         )
       } else {
