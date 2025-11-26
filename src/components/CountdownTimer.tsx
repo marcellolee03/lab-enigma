@@ -10,10 +10,10 @@ export function CountdownTimer() {
   const navigate = useNavigate()
 
   const formatTime = (totalSeconds: number) => {
-    const minutes = Math.floor(totalSeconds / 60);
-    const remainingSeconds = totalSeconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
+    const minutes = Math.floor(totalSeconds / 60)
+    const remainingSeconds = totalSeconds % 60
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
+  }
 
   useEffect(()=>{
     if (remainingTime <= 0) {
@@ -30,7 +30,7 @@ export function CountdownTimer() {
       <h1>Countdown: {formatTime(remainingTime)}</h1>
       {remainingTime === 0 && <p>Estamos sem tempo!</p>}
     </div>
-  );
+  )
 }
 
 export default CountdownTimer;
