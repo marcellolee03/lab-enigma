@@ -53,8 +53,9 @@ export function PuzzleDisplay({ puzzle }: PuzzleDisplayProps) {
 
     if (puzzle.answerType !== "enigma") {
         return (
-            <div>
-                    <p>{puzzle.question}</p>
+            <div className="flex items-center justify-center">
+                <div className="p-10 m-4 shadow-2xl rounded-2xl border border-gray-300">
+                    <p className="bg-gray-100 rounded-2xl p-4">{puzzle.question}</p>
 
                     {puzzle.hint && <p>{puzzle.hint}</p>}
 
@@ -76,7 +77,7 @@ export function PuzzleDisplay({ puzzle }: PuzzleDisplayProps) {
                         penalty={puzzle.penalty}
                         onClick={resetAllInputs}
                     />
-                    
+                </div>
             </div>
         )
     }

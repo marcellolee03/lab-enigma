@@ -32,9 +32,11 @@ export function CountdownTimer() {
   }`
 
   return (
-    <div>
-      <h1 className={timerClasses}>Countdown: {formatTime(remainingTime)}</h1>
-      {remainingTime === 0 && <p>Estamos sem tempo!</p>}
+    <div className="flex items-center justify-center">
+      <div className="rounded-2xl shadow-2xl p-7 m-4 border border-gray-300 ">
+        <p className={timerClasses}>TEMPO RESTANTE:</p>
+        <p>{formatTime(remainingTime)}</p>
+      </div>
     </div>
   )
 }
