@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export function CountdownTimer() {
-  const { getRemainingTime } = useTimerContext()
+  const { getRemainingTime, getIsPenalized } = useTimerContext()
 
   const remainingTime: number = getRemainingTime()
   const navigate = useNavigate()
@@ -26,8 +26,11 @@ export function CountdownTimer() {
   }
 
   return (
-    <div>    
-      <h1>Countdown: {formatTime(remainingTime)}</h1>
+    <div>
+      {getIsPenalized()
+        ? <h1 className="text-red-500">Countdown: {formatTime(remainingTime)}</h1>
+        : <h1>Countdown: {formatTime(remainingTime)}</h1>
+      }
       {remainingTime === 0 && <p>Estamos sem tempo!</p>}
     </div>
   )

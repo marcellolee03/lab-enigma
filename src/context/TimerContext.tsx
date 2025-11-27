@@ -49,7 +49,6 @@ export function TimerProvider({ children }: TimerProviderProps) {
     }
 
     function applyPenalty(penalty: number){
-
         setRemainingTime(prevRemainingTime => prevRemainingTime - penalty)
 
         if (timeoutRef.current) {

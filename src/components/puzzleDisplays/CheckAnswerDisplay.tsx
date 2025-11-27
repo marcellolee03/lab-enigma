@@ -44,7 +44,7 @@ export function CheckAnswerDisplay({ puzzle }: PuzzleDisplayProps) {
                 ))
             }
 
-            <SubmitAnswerButton answers={puzzle.answers} input={userAnswers}/>
+            <SubmitAnswerButton answers={puzzle.answers} input={userAnswers} penalty={puzzle.penalty}/>
         </>
         )
     } else {
