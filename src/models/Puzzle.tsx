@@ -10,9 +10,13 @@ type OpenPuzzle = PuzzleBase & {
     answerType: "open"
 }
 
-type MultipleChoicePuzzle = PuzzleBase & {
-    answerType: "multiple_choice",
-    inputType: "radio" | "checkbox",
+type CheckboxPuzzle = PuzzleBase & {
+    answerType: "checkbox",
+    options: string[]
+}
+
+type RadioPuzzle = PuzzleBase & {
+    answerType: "radio",
     options: string[]
 }
 
@@ -34,4 +38,4 @@ type EnigmaTypePuzzle = {
     enigmas: Enigma[]
 }
 
-export type Puzzle = OpenPuzzle | MultipleChoicePuzzle | EnigmaTypePuzzle
+export type Puzzle = OpenPuzzle |  EnigmaTypePuzzle | CheckboxPuzzle | RadioPuzzle

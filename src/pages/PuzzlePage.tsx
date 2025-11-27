@@ -1,45 +1,17 @@
 import { type Puzzle } from "../models/Puzzle"
 import { CountdownTimer } from "../components/CountdownTimer"
-import { OpenPuzzleDisplay } from "../components/puzzleDisplays/OpenAnswerDisplay"
 import { usePuzzleContext } from "../context/PuzzleContext";
-import { CheckAnswerDisplay } from "../components/puzzleDisplays/CheckAnswerDisplay"
-import { RadioAnswerDisplay } from "../components/puzzleDisplays/RadioAnswerDisplay"
 import { EnigmaCarousel } from "../components/puzzleDisplays/EnigmaCarousel/EnigmaCarousel";
+import { PuzzleDisplay } from "../components/puzzleDisplays/PuzzleDisplay";
 
 export function PuzzlePage(){
     const { getCurrentPuzzle } = usePuzzleContext()
     const currentPuzzle: Puzzle = getCurrentPuzzle()
 
-    if (currentPuzzle.answerType === "open") {
-        return (
-          <>
-            <CountdownTimer />
-            <OpenPuzzleDisplay puzzle = {currentPuzzle} />
-          </>
-        )
-      } else if (currentPuzzle.answerType === "enigma") {
-        return (
-          <>
-            <CountdownTimer/>
-            <EnigmaCarousel enigmas={currentPuzzle.enigmas} />
-          </>
-        )
-      } else {
-        if (currentPuzzle.inputType === "checkbox"){
-          return (
-            <>
-              <CountdownTimer />
-              <CheckAnswerDisplay puzzle = {currentPuzzle} />
-            </>
-          )
-        } else {
-          return (
-            <>
-              <CountdownTimer />
-              <RadioAnswerDisplay puzzle = {currentPuzzle} />
-            </>
-          )
-        }
-    
-    }
+    return (
+      <>
+        <CountdownTimer />
+        <PuzzleDisplay puzzle={currentPuzzle} />
+      </>
+    )
 }

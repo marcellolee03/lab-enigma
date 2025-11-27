@@ -33,8 +33,7 @@ export const puzzles: Puzzle[] = [
 
     {
         id: 5,
-        answerType: "multiple_choice",
-        inputType: "radio",
+        answerType: "radio",
         options: ["Sim", "Não"],
         question: "Deixa resíduo no meio de cultura?",
         answers: [],
@@ -49,9 +48,8 @@ export const puzzles: Puzzle[] = [
 
     {
         id: 7,
-        answerType: "multiple_choice",
+        answerType: "radio",
         options: ["Gram-positiva", "Gram-negativa"],
-        inputType: "radio",
         question: "Qual é o tipo da parede celular da bactéria?",
         answers: ["Gram-positiva"],
         penalty: 300
@@ -59,9 +57,8 @@ export const puzzles: Puzzle[] = [
 
     {
         id: 8,
-        answerType: "multiple_choice",
+        answerType: "radio",
         options: ["Catalase Positiva", "Catalase Negativa"],
-        inputType: "radio",
         question: "Prova da catalase.",
         answers: ["Catalase Positiva"],
         penalty: 300
@@ -69,9 +66,8 @@ export const puzzles: Puzzle[] = [
 
     {
         id: 9,
-        answerType: "multiple_choice",
+        answerType: "checkbox",
         options: ["Tetraciclina", "Novobiocina", "Vancomicina", "Penicilina", "Nitrofurantoína", "Ceftriaxona"],
-        inputType: "checkbox",
         question: "A bactéria é sensível à quais antibióticos testados?",
         answers: ["Vancomicina", "Ceftriaxona"],
         penalty: 300
