@@ -25,12 +25,15 @@ export function CountdownTimer() {
     return null
   }
 
+  const timerClasses = `transition-colors duration-200 ${
+    getIsPenalized()
+      ? "text-red-500 animate-shake"
+      : ""
+  }`
+
   return (
     <div>
-      {getIsPenalized()
-        ? <h1 className="text-red-500">Countdown: {formatTime(remainingTime)}</h1>
-        : <h1>Countdown: {formatTime(remainingTime)}</h1>
-      }
+      <h1 className={timerClasses}>Countdown: {formatTime(remainingTime)}</h1>
       {remainingTime === 0 && <p>Estamos sem tempo!</p>}
     </div>
   )
