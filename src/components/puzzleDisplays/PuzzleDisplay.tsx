@@ -28,7 +28,7 @@ export function PuzzleDisplay({ puzzle }: PuzzleDisplayProps) {
     }
 
     function handleChange({ option, event, isChecked }: handleChangeParams) {
-        if (puzzle.answerType === "checkbox" && option && isChecked) {
+        if (puzzle.answerType === "checkbox" && option && isChecked !== null) {
             if (isChecked) {
                 setUserAnswer(prevAnswers => [...prevAnswers, option])
             } else {
@@ -36,6 +36,8 @@ export function PuzzleDisplay({ puzzle }: PuzzleDisplayProps) {
                     prevAnswers.filter(answer => answer !== option)
                 )
             }
+
+            console.log(userAnswer)
         }
 
         if (puzzle.answerType === "radio" && option) {

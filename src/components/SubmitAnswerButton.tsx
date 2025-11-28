@@ -5,7 +5,7 @@ interface SubmitAnswerButtonProps {
     answers: string[],
     input: string[],
     penalty?: number
-    onClick?: () => void
+    onClick: () => void
 }
 
 export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAnswerButtonProps) {
@@ -40,11 +40,9 @@ export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAns
     }
 
     function handleClick(arr1: string[], arr2: string[]) {
-
-        if (onClick) {
-            onClick()
-        }
-
+        onClick()
+        console.log(input)
+        
         if (answers.length === 0) {
             moveToNextPuzzle()
             return
