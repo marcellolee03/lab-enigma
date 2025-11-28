@@ -61,7 +61,10 @@ export function SubmitAnswerButton({answers, input, penalty, onClick}: SubmitAns
 
     return (
         <>
-            <button onClick={() => handleClick(answers, input)}>Submit Answer</button>
+            <button 
+                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer
+                            transition  duration-300 ease-in-out hover:-translate-y-1 hover:scale-101"
+                onClick={() => handleClick(answers, input)}>Submit Answer</button>
         </>
     )
 }

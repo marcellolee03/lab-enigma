@@ -7,7 +7,7 @@ interface OpenPuzzleInputProps {
 
 export function OpenPuzzleInput({ typedAnswer, handleChange}: OpenPuzzleInputProps) {
     return (
-        <input
+        <input className="border rounded-md border-gray-400"
             type="text"
             value={typedAnswer}
             onChange={(e) => handleChange({event: e})}

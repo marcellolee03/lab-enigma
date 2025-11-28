@@ -25,18 +25,18 @@ export function CountdownTimer() {
     return null
   }
 
-  const timerClasses = `transition-colors duration-200 ${
+  const timerClasses = `transition-colors font-bold duration-200 ${
     getIsPenalized()
       ? "text-red-500 animate-shake"
       : ""
   }`
 
+  const remainingTimeClasses = `text-4xl ${timerClasses}`
+
   return (
-    <div className="flex items-center justify-center">
-      <div className="rounded-2xl shadow-2xl p-7 m-4 border border-gray-300 ">
+    <div className="grid place-items-center">
         <p className={timerClasses}>TEMPO RESTANTE:</p>
-        <p>{formatTime(remainingTime)}</p>
-      </div>
+        <p className={remainingTimeClasses}>{formatTime(remainingTime)}</p>
     </div>
   )
 }
