@@ -53,11 +53,10 @@ export function PuzzleDisplay({ puzzle }: PuzzleDisplayProps) {
         }
     }
 
-    if (puzzle.answerType !== "enigma") {
-        return (
+    return (
             <div className="grid place-items-center">
                 <div className="p-10 m-4 shadow-xl rounded-2xl border border-gray-300 grid place-items-center gap-y-5">
-                    <p className="bg-gray-100 rounded-2xl p-4">{puzzle.question}</p>
+                    {puzzle.question && <p className="bg-gray-100 rounded-2xl p-4">{puzzle.question}</p>}
 
                     {puzzle.hint && <p>{puzzle.hint}</p>}
 
@@ -82,5 +81,4 @@ export function PuzzleDisplay({ puzzle }: PuzzleDisplayProps) {
                 </div>
             </div>
         )
-    }
 }

@@ -1,7 +1,63 @@
 import { type Puzzle } from "../models/Puzzle"
 
 export const puzzles: Puzzle[] = [
-
+    {
+        id: 0,
+        answerType: "enigma",
+        first_row_options: [
+            {
+                content: "1",
+                valid: true
+            },
+            {
+                content: "2",
+                valid: true
+            },
+            {
+                content: "3",
+                valid: true
+            },
+            {
+                content: "4",
+                valid: true
+            },
+            {
+                content: "5",
+                valid: true
+            },
+        
+        ],
+        second_row_options: [
+            {
+                content: "a",
+                valid: true
+            },
+            {
+                content: "b",
+                valid: true
+            },
+            {
+                content: "c",
+                valid: true
+            },
+            {
+                content: "d",
+                valid: true
+            },
+            {
+                content: "e",
+                valid: true
+            },
+        
+        ],
+        answers: [
+            "4a",
+            "3b",
+            "1c",
+            "2d",
+        ],
+        penalty: 300
+    },
 
     {
         id: 1,

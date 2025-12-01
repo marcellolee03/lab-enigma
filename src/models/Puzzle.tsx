@@ -1,6 +1,6 @@
 type PuzzleBase = {
     id: number,
-    question: string,
+    question?: string,
     hint?: string,
     answers: string[]
     penalty?: number
@@ -20,22 +20,17 @@ type RadioPuzzle = PuzzleBase & {
     options: string[]
 }
 
-export type Enigma = {
-    id: number
 
-    hint: string
-    first_question: string
-    first_answer: string
-
-    second_question: string
-    second_answer: string
-
-    penalty?: number
+export type EnigmaOption = {
+    content: string,
+    valid: boolean
 }
 
-type EnigmaTypePuzzle = {
-    answerType: "enigma",
-    enigmas: Enigma[]
+type EnigmaPuzzle = PuzzleBase & {
+    answerType: "enigma"
+
+    first_row_options: EnigmaOption[]
+    second_row_options: EnigmaOption[]
 }
 
-export type Puzzle = OpenPuzzle |  EnigmaTypePuzzle | CheckboxPuzzle | RadioPuzzle
+export type Puzzle = OpenPuzzle |  EnigmaPuzzle | CheckboxPuzzle | RadioPuzzle
