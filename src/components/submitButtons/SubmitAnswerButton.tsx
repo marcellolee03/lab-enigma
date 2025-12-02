@@ -1,5 +1,5 @@
-import { usePuzzleContext } from "../context/PuzzleContext";
-import { useTimerContext } from "../context/TimerContext";
+import { usePuzzleContext } from "../../context/PuzzleContext";
+import { useTimerContext } from "../../context/TimerContext";
 
 interface SubmitAnswerButtonProps {
     answers: string[],

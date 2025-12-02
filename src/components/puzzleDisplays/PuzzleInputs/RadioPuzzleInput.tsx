@@ -9,17 +9,18 @@ interface RadioPuzzleInputProps {
 
 export function RadioPuzzleInput({ handleChange, userAnswer, puzzle}: RadioPuzzleInputProps) {
     if (puzzle.answerType === "radio") {
-        return (puzzle.options.map((option) => (
-            <label key={option}>
-                <input
-                    type="radio"
-                    name="choice"
-                    value={option}
-                    onChange={() => handleChange({option: option})}
-                    checked={userAnswer.includes(option)}
-                />
-                {option}
-            </label>
+        return (
+            puzzle.options.map((option) => (
+                <label key={option}>
+                    <input
+                        type="radio"
+                        name="choice"
+                        value={option}
+                        onChange={() => handleChange({option: option})}
+                        checked={userAnswer.includes(option)}
+                    />
+                    {option}
+                </label>
         ))
         )
     }

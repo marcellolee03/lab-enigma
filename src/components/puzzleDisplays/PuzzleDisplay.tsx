@@ -1,6 +1,6 @@
 import { type Puzzle } from "../../models/Puzzle"
 import { useState } from "react"
-import { SubmitAnswerButton } from "../SubmitAnswerButton"
+import { SubmitAnswerButton } from "../submitButtons/SubmitAnswerButton"
 import { OpenPuzzleInput } from "./PuzzleInputs/OpenPuzzleInput"
 import { CheckboxPuzzleInput } from "./PuzzleInputs/CheckboxPuzzleInput"
 import { RadioPuzzleInput } from "./PuzzleInputs/RadioPuzzleInput"
