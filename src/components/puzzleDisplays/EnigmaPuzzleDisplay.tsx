@@ -4,12 +4,11 @@ import { useTimerContext } from "../../context/TimerContext";
 import { type EnigmaOption, type Puzzle } from "../../models/Puzzle";
 import { EnigmaPuzzleInput } from "./PuzzleInputs/EnigmaPuzzleInput";
 
-interface handleChangeProps {
+interface enigmaHandleChange {
     option: string
     row: number
 }
-export type enigmaHandleChangeFn = (params: handleChangeProps) => void
-
+export type enigmaHandleChangeFn = (params: enigmaHandleChange) => void
 
 interface EnigmaPuzzleDisplayProps {
     puzzle: Puzzle
@@ -25,7 +24,7 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
         const [ secondRowOptions, setSecondRowOptions ] = useState<EnigmaOption[]>(puzzle.second_row_options)
         const [ userAnswer, setUserAnswer ] = useState<string[]>(["", ""])
 
-        function handleChange({option, row}: handleChangeProps) {
+        function enigmaHandleChange({option, row}: enigmaHandleChange) {
             setUserAnswer( prev => {
                     const updated = [...prev]
                     updated[row] = option
@@ -85,14 +84,13 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
 
             <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
                 {firstRowOptions.map((option) => (
-                    <EnigmaPuzzleInput option={option} row={0} enigmaHandleChange={handleChange}/>
+                    <EnigmaPuzzleInput option={option} row={0} userAnswer={userAnswer} enigmaHandleChange={enigmaHandleChange}/>
                 ))}
             </div>
             
-            
             <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
                 {secondRowOptions.map((option) => (
-                    <EnigmaPuzzleInput option={option} row={1} enigmaHandleChange={handleChange} />
+                    <EnigmaPuzzleInput option={option} row={1} userAnswer={userAnswer} enigmaHandleChange={enigmaHandleChange} />
                 ))}
             </div>
 
