@@ -11,6 +11,8 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
     const { moveToNextPuzzle } = usePuzzleContext()
     const { applyPenalty } = useTimerContext()
 
+    const optionButtonClasses = "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer transition  duration-300 ease-in-out hover:-translate-y-1 hover:scale-101"
+
     if (puzzle.answerType === "enigma") {
         const [ puzzleAnswers, setPuzzleAnswers ] = useState<string[]>(puzzle.answers)
         const [ firstRowOptions, setFirstRowOptions ] = useState<EnigmaOption[]>(puzzle.first_row_options)
@@ -75,12 +77,15 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
         <>
             {puzzle.hint && <p>{puzzle.hint}</p>}
 
-            <div>
+            <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
                 {firstRowOptions.map((option) => (
                     option.valid 
-                    ? <label key={option.content}>
+                    ? <label 
+                        className= {optionButtonClasses}
+                        key={option.content}>
                             <input
                                 type="radio"
+                                className="appearance-none"
                                 name="choice-row-0"
                                 value={option.content}
                                 onChange={() => handleChange(option.content, 0)}
@@ -89,19 +94,24 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
                             {option.content}
                         </label>
 
-                    : <label className="bg-red-500" key={option.content}>
+                    : <label 
+                        className="bg-green-500 text-white font-bold py-2 px-4 rounded"
+                        key={option.content}>
                             {option.content}
                         </label>
                 ))}
             </div>
             
             
-            <div>
+            <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
                 {secondRowOptions.map((option) => (
                     option.valid 
-                    ? <label key={option.content}>
+                    ? <label 
+                        className= {optionButtonClasses}
+                        key={option.content}>
                             <input
                                 type="radio"
+                                className="appearance-none"
                                 name="choice-row-1"
                                 value={option.content}
                                 onChange={() => handleChange(option.content, 1)}
@@ -110,7 +120,9 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
                             {option.content}
                         </label>
 
-                    : <label className="bg-red-500" key={option.content}>
+                    : <label 
+                        className="bg-green-500 text-white font-bold py-2 px-4 rounded"
+                        key={option.content}>
                             {option.content}
                         </label>
                 ))}
