@@ -2,6 +2,14 @@ import { useState } from "react";
 import { usePuzzleContext } from "../../context/PuzzleContext";
 import { useTimerContext } from "../../context/TimerContext";
 import { type EnigmaOption, type Puzzle } from "../../models/Puzzle";
+import { EnigmaPuzzleInput } from "./PuzzleInputs/EnigmaPuzzleInput";
+
+interface handleChangeProps {
+    option: string
+    row: number
+}
+export type enigmaHandleChangeFn = (params: handleChangeProps) => void
+
 
 interface EnigmaPuzzleDisplayProps {
     puzzle: Puzzle
@@ -11,15 +19,13 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
     const { moveToNextPuzzle } = usePuzzleContext()
     const { applyPenalty } = useTimerContext()
 
-    const optionButtonClasses = "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded cursor-pointer transition  duration-300 ease-in-out hover:-translate-y-1 hover:scale-101"
-
     if (puzzle.answerType === "enigma") {
         const [ puzzleAnswers, setPuzzleAnswers ] = useState<string[]>(puzzle.answers)
         const [ firstRowOptions, setFirstRowOptions ] = useState<EnigmaOption[]>(puzzle.first_row_options)
         const [ secondRowOptions, setSecondRowOptions ] = useState<EnigmaOption[]>(puzzle.second_row_options)
         const [ userAnswer, setUserAnswer ] = useState<string[]>(["", ""])
 
-        function handleChange(option: string, row: number) {
+        function handleChange({option, row}: handleChangeProps) {
             setUserAnswer( prev => {
                     const updated = [...prev]
                     updated[row] = option
@@ -79,52 +85,14 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
 
             <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
                 {firstRowOptions.map((option) => (
-                    option.valid 
-                    ? <label 
-                        className= {optionButtonClasses}
-                        key={option.content}>
-                            <input
-                                type="radio"
-                                className="appearance-none"
-                                name="choice-row-0"
-                                value={option.content}
-                                onChange={() => handleChange(option.content, 0)}
-                                checked={userAnswer[0] === option.content}
-                            />
-                            {option.content}
-                        </label>
-
-                    : <label 
-                        className="bg-green-500 text-white font-bold py-2 px-4 rounded"
-                        key={option.content}>
-                            {option.content}
-                        </label>
+                    <EnigmaPuzzleInput option={option} row={0} enigmaHandleChange={handleChange}/>
                 ))}
             </div>
             
             
             <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
                 {secondRowOptions.map((option) => (
-                    option.valid 
-                    ? <label 
-                        className= {optionButtonClasses}
-                        key={option.content}>
-                            <input
-                                type="radio"
-                                className="appearance-none"
-                                name="choice-row-1"
-                                value={option.content}
-                                onChange={() => handleChange(option.content, 1)}
-                                checked={userAnswer[1] === option.content}
-                            />
-                            {option.content}
-                        </label>
-
-                    : <label 
-                        className="bg-green-500 text-white font-bold py-2 px-4 rounded"
-                        key={option.content}>
-                            {option.content}
-                        </label>
+                    <EnigmaPuzzleInput option={option} row={1} enigmaHandleChange={handleChange} />
                 ))}
             </div>
 
