@@ -17,40 +17,43 @@ export function EnigmaPuzzleDisplay({ puzzle }: EnigmaPuzzleDisplayProps) {
         const [ userAnswer, setUserAnswer ] = useState<string[]>(["", ""])
 
         return (
-        <>
-            {puzzle.hint && <p>{puzzle.hint}</p>}
+        <div className="grid place-items-center">
+            <div className="p-10 m-4 shadow-xl rounded-2xl border border-gray-300 grid place-items-center gap-y-5">
 
-            <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
-                {firstRowOptions.map((option) => (
-                    <EnigmaPuzzleInput 
-                        option={option} 
-                        row={0} 
-                        userAnswer={userAnswer} 
-                        setUserAnswer={setUserAnswer}
-                    />
-                ))}
-            </div>
-            
-            <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
-                {secondRowOptions.map((option) => (
-                    <EnigmaPuzzleInput 
-                        option={option} 
-                        row={1} 
-                        userAnswer={userAnswer} 
-                        setUserAnswer={setUserAnswer}
-                    />
-                ))}
-            </div>
+                {puzzle.hint && <p className="font-bold">{puzzle.hint}</p>}
+                
+                <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
+                    {firstRowOptions.map((option) => (
+                        <EnigmaPuzzleInput 
+                            option={option} 
+                            row={0} 
+                            userAnswer={userAnswer} 
+                            setUserAnswer={setUserAnswer}
+                        />
+                    ))}
+                </div>
+                
+                <div className="grid grid-flow-col gap-4 min-w-2xl max-w-2xl">
+                    {secondRowOptions.map((option) => (
+                        <EnigmaPuzzleInput 
+                            option={option} 
+                            row={1} 
+                            userAnswer={userAnswer} 
+                            setUserAnswer={setUserAnswer}
+                        />
+                    ))}
+                </div>
 
-            <EnigmaSubmitButton 
-                puzzle={puzzle} 
-                userAnswer={userAnswer}
-                puzzleAnswers={puzzleAnswers}
-                setPuzzleAnswers={setPuzzleAnswers}
-                setFirstRowOptions={setFirstRowOptions}
-                setSecondRowOptions={setSecondRowOptions}
-            />
-        </>
+                <EnigmaSubmitButton 
+                    puzzle={puzzle} 
+                    userAnswer={userAnswer}
+                    puzzleAnswers={puzzleAnswers}
+                    setPuzzleAnswers={setPuzzleAnswers}
+                    setFirstRowOptions={setFirstRowOptions}
+                    setSecondRowOptions={setSecondRowOptions}
+                />
+            </div>
+        </div>
         )   
     }
 }

@@ -11,19 +11,23 @@ export function PuzzlePage(){
     if (currentPuzzle.answerType === "enigma"){
 
       return (
-        <>
-          <CountdownTimer />
-          <EnigmaPuzzleDisplay puzzle={currentPuzzle} />
-        </>
+        <div className="grid place-items-center h-screen">
+          <div>
+            <CountdownTimer />
+            <EnigmaPuzzleDisplay puzzle={currentPuzzle} />
+          </div>
+        </div>
       )
 
     } else {
 
       return (
-      <>
-        <CountdownTimer />
-        <PuzzleDisplay puzzle={currentPuzzle} />
-      </>
+      <div className="grid place-items-center h-screen">
+        <div>
+          <CountdownTimer />
+          <PuzzleDisplay puzzle={currentPuzzle} />
+        </div>
+      </div>
       )
       
     }

@@ -2,64 +2,6 @@ import { type Puzzle } from "../models/Puzzle"
 
 export const puzzles: Puzzle[] = [
     {
-        id: 0,
-        answerType: "enigma",
-        first_row_options: [
-            {
-                content: "1",
-                valid: true
-            },
-            {
-                content: "2",
-                valid: true
-            },
-            {
-                content: "3",
-                valid: true
-            },
-            {
-                content: "4",
-                valid: true
-            },
-            {
-                content: "5",
-                valid: true
-            },
-        
-        ],
-        second_row_options: [
-            {
-                content: "a",
-                valid: true
-            },
-            {
-                content: "b",
-                valid: true
-            },
-            {
-                content: "c",
-                valid: true
-            },
-            {
-                content: "d",
-                valid: true
-            },
-            {
-                content: "e",
-                valid: true
-            },
-        
-        ],
-        answers: [
-            "4a",
-            "3b",
-            "1c",
-            "2d",
-        ],
-        penalty: 300
-    },
-
-    {
         id: 1,
         answerType: "open",
         question: "Qual é o formato da colônia?",
@@ -163,9 +105,60 @@ export const puzzles: Puzzle[] = [
 
     {
         id: 14,
-        answerType: "open",
-        question: "-----",
-        answers: ["modelos didáticos"],
+        answerType: "enigma",
+        hint: "Assimile os elementos com seus respectivos pares.",
+        first_row_options: [
+            {
+                content: "1",
+                valid: true
+            },
+            {
+                content: "2",
+                valid: true
+            },
+            {
+                content: "3",
+                valid: true
+            },
+            {
+                content: "4",
+                valid: true
+            },
+            {
+                content: "5",
+                valid: true
+            },
+        
+        ],
+        second_row_options: [
+            {
+                content: "a",
+                valid: true
+            },
+            {
+                content: "b",
+                valid: true
+            },
+            {
+                content: "c",
+                valid: true
+            },
+            {
+                content: "d",
+                valid: true
+            },
+            {
+                content: "e",
+                valid: true
+            },
+        
+        ],
+        answers: [
+            "4a",
+            "3b",
+            "1c",
+            "2d",
+        ],
         penalty: 300
     },
 
@@ -173,7 +166,7 @@ export const puzzles: Puzzle[] = [
         id: 15,
         answerType: "open",
         question: "--6384. Qual é o nome da bactéria?",
-        answers: ["enterococcus faecalis"],
+        answers: ["pantojas paixões"],
         penalty: 300
     },
 ]
