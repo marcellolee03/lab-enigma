@@ -91,7 +91,7 @@ export const puzzles: Puzzle[] = [
         id: 12,
         answerType: "open",
         question: "---",
-        answers: ["Meio de cultura com cloranfenicol"],
+        answers: ["Meio de cultura"],
         penalty: 300
     },
 
